@@ -1,3 +1,4 @@
+import 'package:amazon_web/screens/StockupCollege.Dart';
 import 'package:amazon_web/screens/bargains_finds.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,13 @@ class MyApp extends StatelessWidget {
           alignment: Alignment.bottomLeft,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(children: [BargainsFinds()]),
+            child: Row(
+              children: [
+                BargainsFinds(),
+                const SizedBox(width: 10),
+                StockUpForCollege(),
+              ],
+            ),
           ),
         ),
       ),
