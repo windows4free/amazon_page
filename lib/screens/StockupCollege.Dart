@@ -15,7 +15,7 @@ class StockUpForCollege extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(10),
             child: Text(
-              'Stock up for college',
+              '   Stock up for college',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
@@ -35,12 +35,12 @@ class StockUpForCollege extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Everything you need, on campus and off',
+                  '  Everything you need, on campus and off',
                   style: TextStyle(fontSize: 12),
                 ),
                 SizedBox(height: 30),
                 Text(
-                  'Shop all Off to College',
+                  '   Shop all Off to College',
                   style: TextStyle(color: Colors.blue, fontSize: 12),
                 ),
               ],

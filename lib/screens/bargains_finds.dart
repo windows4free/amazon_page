@@ -13,7 +13,7 @@ class BargainsFinds extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            '   Bargain finds',
+            'Bargain finds',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             textAlign: TextAlign.right,
           ),
@@ -30,12 +30,12 @@ class BargainsFinds extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           const Text(
-            '   Device accessories',
+            'Device accessories',
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 30),
           const Text(
-            '   See more',
+            ' See more',
             style: TextStyle(color: Colors.blue, fontSize: 12),
           ),
         ],
