@@ -1,6 +1,7 @@
 import 'package:amazon_web/screens/StockupCollege.Dart';
 import 'package:amazon_web/screens/bargains_finds.dart';
 import 'package:amazon_web/screens/sign_in_screen.dart';
+import 'package:amazon_web/screens/barra_nav.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -22,11 +23,11 @@ class MyApp extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20), 
+                  padding: const EdgeInsets.only(bottom: 20),
                   child: Row(
                     children: [
                       BargainsFinds(),
-                      const SizedBox(width: 10), 
+                      const SizedBox(width: 10),
                       StockUpForCollege(),
                     ],
                   ),
@@ -35,10 +36,7 @@ class MyApp extends StatelessWidget {
 
               Align(
                 alignment: Alignment.bottomRight,
-                child: SizedBox(
-                  width: 300, 
-                  child: AmazonSignInScreen(),
-                ),
+                child: SizedBox(width: 300, child: AmazonSignInScreen()),
               ),
             ],
           ),
