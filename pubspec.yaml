@@ -61,8 +61,12 @@ flutter:
   assets:
     - assets/images/phone_image.jpg
     - assets/images/backpack.jpg
-    - assets/images/anuncioo.jpg
+    - assets/images/anuncioo.png
     - assets/images/Amzg.jpg
+    - assets/images/echo_dot.png
+    - assets/images/echo_input.png
+    - assets/images/fire_hd10.png
+    - assets/images/fire_tv_stick.png
 
      
 

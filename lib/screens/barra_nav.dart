@@ -23,44 +23,87 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
+        preferredSize: const Size.fromHeight(102),
         child: Column(
           children: [
             Container(
-              color: const Color.fromARGB(
-                255,
-                14,
-                13,
-                13,
-              ), // color arriba negro
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              color: const Color(0xFF131921),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 60,
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Menú, logo y dirección a la izquierda
+                  IconButton(
+                    icon: const Icon(Icons.menu, color: Colors.white),
+                    onPressed: () {},
+                  ),
                   Row(
                     children: [
-                      IconButton(
-                        icon: const Icon(Icons.menu, color: Colors.white),
-                        onPressed: () {},
+                      Image.asset('assets/images/Amzg.jpg', height: 32),
+                      const SizedBox(width: 4),
+                      const Text(
+                        'Try Prime',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFF00A8E1),
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                      Image.asset(
-                        'assets/images/Amzg.jpg', // Imagen del logo en assets
-                        height: 55,
-                      ),
-                      const SizedBox(width: 15),
-                      const DeliveryInfo(),
                     ],
                   ),
-                  const Spacer(),
-                  // Barra de búsqueda
-                  const Expanded(flex: 3, child: SearchBar()),
-                  const Spacer(),
-                  // Sección de cuenta y carrito a la derecha
+                  const SizedBox(width: 12),
+                  const DeliveryInfo(),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: SearchBar(),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
                   const AccountCartSection(),
                 ],
               ),
             ),
-            const SecondaryNavBar(),
+            Container(
+              color: const Color(0xFF232F3E),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 40, // Ajustado para evitar overflow
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      NavLink("Today's Deals"),
+                      NavLink("Your Amazon.com"),
+                      NavLink("Gift Cards"),
+                      NavLink("Help"),
+                      NavLink("Whole Foods"),
+                      NavLink("Registry"),
+                      NavLink("Sell"),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Off to College ",
+                        style: TextStyle(color: Colors.white, fontSize: 13),
+                      ),
+                      Text(
+                        "deals",
+                        style: TextStyle(
+                          color: Color(0xFFFACC15),
+                          fontSize: 13,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -69,7 +112,22 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// Información de entrega
+class NavLink extends StatelessWidget {
+  final String label;
+  const NavLink(this.label, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 6),
+      child: Text(
+        label,
+        style: const TextStyle(color: Colors.white, fontSize: 13),
+      ),
+    );
+  }
+}
+
 class DeliveryInfo extends StatelessWidget {
   const DeliveryInfo({super.key});
 
@@ -78,19 +136,19 @@ class DeliveryInfo extends StatelessWidget {
     return Row(
       children: const [
         Icon(Icons.location_on, color: Colors.white, size: 18),
-        SizedBox(width: 5),
+        SizedBox(width: 4),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Deliver to",
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: TextStyle(color: Colors.white, fontSize: 11),
             ),
             Text(
               "Seattle 98103",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: 13,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -101,7 +159,6 @@ class DeliveryInfo extends StatelessWidget {
   }
 }
 
-// Barra de búsqueda
 class SearchBar extends StatelessWidget {
   const SearchBar({super.key});
 
@@ -111,20 +168,23 @@ class SearchBar extends StatelessWidget {
       height: 40,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(4),
       ),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             decoration: const BoxDecoration(
               color: Color(0xFFEDEDED),
-              borderRadius: BorderRadius.horizontal(left: Radius.circular(8)),
+              borderRadius: BorderRadius.horizontal(left: Radius.circular(4)),
             ),
             child: Row(
               children: const [
-                Text("All", style: TextStyle(color: Colors.black)),
-                Icon(Icons.arrow_drop_down, color: Colors.black),
+                Text(
+                  "All",
+                  style: TextStyle(color: Colors.black, fontSize: 13),
+                ),
+                Icon(Icons.arrow_drop_down, color: Colors.black, size: 18),
               ],
             ),
           ),
@@ -142,10 +202,10 @@ class SearchBar extends StatelessWidget {
             width: 40,
             decoration: const BoxDecoration(
               color: Color(0xFFFFA41C),
-              borderRadius: BorderRadius.horizontal(right: Radius.circular(8)),
+              borderRadius: BorderRadius.horizontal(right: Radius.circular(4)),
             ),
             child: IconButton(
-              icon: const Icon(Icons.search, color: Colors.white),
+              icon: const Icon(Icons.search, color: Colors.white, size: 20),
               onPressed: () {},
             ),
           ),
@@ -155,7 +215,6 @@ class SearchBar extends StatelessWidget {
   }
 }
 
-// Sección de cuenta y carrito
 class AccountCartSection extends StatelessWidget {
   const AccountCartSection({super.key});
 
@@ -185,7 +244,7 @@ class AccountCartSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 16),
         const Text(
           "Orders",
           style: TextStyle(
@@ -194,7 +253,7 @@ class AccountCartSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 16),
         const Text(
           "Try Prime",
           style: TextStyle(
@@ -203,7 +262,7 @@ class AccountCartSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(width: 20),
+        const SizedBox(width: 16),
         Stack(
           children: [
             const Icon(Icons.shopping_cart, color: Colors.white, size: 28),
@@ -219,7 +278,7 @@ class AccountCartSection extends StatelessWidget {
                   "0",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -228,46 +287,6 @@ class AccountCartSection extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-// Barra de navegación secundaria
-class SecondaryNavBar extends StatelessWidget {
-  const SecondaryNavBar({super.key});
-
-  final List<String> items = const [
-    "Today's Deals",
-    "Your Amazon.com",
-    "Gift Cards",
-    "Help",
-    "Whole Foods",
-    "Registry",
-    "Sell",
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: const Color.fromARGB(255, 0, 0, 0), // color negro abajo
-      padding: const EdgeInsets.symmetric(vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          for (var item in items)
-            Text(
-              item,
-              style: const TextStyle(color: Colors.white, fontSize: 14),
-            ),
-          Row(
-            children: const [
-              Text("EN", style: TextStyle(color: Colors.white, fontSize: 14)),
-              SizedBox(width: 4),
-              Icon(Icons.language, color: Colors.white, size: 16),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
