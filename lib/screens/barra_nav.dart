@@ -21,18 +21,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenHeight * 0.13),
+        preferredSize: const Size.fromHeight(102),
         child: Column(
           children: [
             Container(
               color: const Color(0xFF131921),
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
-              height: screenHeight * 0.07,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 60,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -40,10 +37,7 @@ class HomeScreen extends StatelessWidget {
                     icon: const Icon(Icons.menu, color: Colors.white),
                     onPressed: () {},
                   ),
-                  Image.asset(
-                    'assets/images/Amzg.jpg',
-                    height: screenHeight * 0.04,
-                  ),
+                  Image.asset('assets/images/Amzg.jpg', height: 32),
                   const SizedBox(width: 4),
                   const Text(
                     'Try Prime',
@@ -53,66 +47,59 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(width: screenWidth * 0.02),
+                  const SizedBox(width: 12),
                   const DeliveryInfo(),
-                  SizedBox(width: screenWidth * 0.02),
+                  const SizedBox(width: 12),
                   Expanded(
                     flex: 3,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: screenWidth * 0.01,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: SearchBar(),
                     ),
                   ),
-                  SizedBox(width: screenWidth * 0.02),
-                  Flexible(
-                    child: Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              "EN",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                            Icon(Icons.language, color: Colors.white, size: 16),
-                          ],
-                        ),
-                        SizedBox(width: 10),
-                        const Flexible(child: AccountCartSection()),
-                      ],
-                    ),
+                  const SizedBox(width: 12),
+                  Row(
+                    children: [
+                      Column(
+                        children: const [
+                          Icon(Icons.language, color: Colors.white, size: 16),
+                          Text(
+                            "EN",
+                            style: TextStyle(color: Colors.white, fontSize: 11),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 10),
+                      const AccountCartSection(),
+                    ],
                   ),
                 ],
               ),
             ),
             Container(
               color: const Color(0xFF232F3E),
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
-              height: screenHeight * 0.05,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: const [
-                          NavLink("Today's Deals"),
-                          NavLink("Your Amazon.com"),
-                          NavLink("Gift Cards"),
-                          NavLink("Help"),
-                          NavLink("Whole Foods"),
-                          NavLink("Registry"),
-                          NavLink("Sell"),
-                        ],
-                      ),
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      NavLink("Today's Deals"),
+                      SizedBox(width: 80),
+                      NavLink("Your Amazon.com"),
+                      SizedBox(width: 80),
+                      NavLink("Gift Cards"),
+                      SizedBox(width: 80),
+                      NavLink("Help"),
+                      SizedBox(width: 80),
+                      NavLink("Whole Foods"),
+                      SizedBox(width: 80),
+                      NavLink("Registry"),
+                      SizedBox(width: 80),
+                      NavLink("Sell"),
+                    ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,12 +134,9 @@ class NavLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 6),
-      child: Text(
-        label,
-        style: const TextStyle(color: Colors.white, fontSize: 13),
-      ),
+    return Text(
+      label,
+      style: const TextStyle(color: Colors.white, fontSize: 13),
     );
   }
 }
@@ -193,9 +177,8 @@ class SearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      height: screenHeight * 0.05,
+      height: 40,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(4),
@@ -222,14 +205,17 @@ class SearchBar extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Search",
-                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 8,
+                ),
                 border: InputBorder.none,
               ),
             ),
           ),
           Container(
-            height: screenHeight * 0.05,
-            width: screenHeight * 0.05,
+            height: 40,
+            width: 40,
             decoration: const BoxDecoration(
               color: Color(0xFFFFA41C),
               borderRadius: BorderRadius.horizontal(right: Radius.circular(4)),
@@ -250,9 +236,7 @@ class AccountCartSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 8,
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Row(
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -276,6 +260,7 @@ class AccountCartSection extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(width: 12),
         const Text(
           "Orders",
           style: TextStyle(
@@ -284,6 +269,7 @@ class AccountCartSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        const SizedBox(width: 12),
         const Text(
           "Try Prime",
           style: TextStyle(
@@ -292,6 +278,7 @@ class AccountCartSection extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        const SizedBox(width: 12),
         Stack(
           children: [
             const Icon(Icons.shopping_cart, color: Colors.white, size: 26),

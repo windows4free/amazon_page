@@ -1,4 +1,3 @@
-// File: lib/screens/off_to_college_deals.dart
 import 'package:flutter/material.dart';
 
 class OffToCollegeDeals extends StatelessWidget {
@@ -8,90 +7,115 @@ class OffToCollegeDeals extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Color(0xFFE3E6E6),
-      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-      child: Column(
+      color: const Color(0xFFF2F2F2),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Título y subtítulos
-          RichText(
-            text: TextSpan(
-              style: TextStyle(color: Colors.black),
+          // Flecha izquierda
+          const Icon(Icons.chevron_left, size: 36),
+
+          // Contenido centrado: texto + productos
+          Expanded(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextSpan(
-                  text: 'Off to ',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                TextSpan(
-                  text: 'College',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFF0C14B),
+                // Texto (centrado dentro del espacio entre las flechas)
+                Expanded(
+                  flex: 3,
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        RichText(
+                          text: TextSpan(
+                            style: const TextStyle(color: Colors.black),
+                            children: [
+                              const TextSpan(
+                                text: 'Off to ',
+                                style: TextStyle(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'College',
+                                style: const TextStyle(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold,
+                                  backgroundColor: Color(0xFFFACC15),
+                                  color: Colors.black,
+                                ),
+                              ),
+                              const TextSpan(
+                                text: ' Deals',
+                                style: TextStyle(
+                                  fontSize: 26,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Amazon Devices with Alexa',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          'Limited-time offer',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                TextSpan(
-                  text: ' Deals',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+
+                const SizedBox(width: 20),
+
+                // Productos
+                Expanded(
+                  flex: 5,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildProduct(
+                        'echo input',
+                        'assets/images/echo_input.png',
+                        '34.99',
+                        '19.99',
+                      ),
+                      _buildProduct(
+                        'fire tv stick',
+                        'assets/images/fire_tv_stick.png',
+                        '39.99',
+                        '29.99',
+                      ),
+                      _buildProduct(
+                        'echo dot',
+                        'assets/images/echo_dot.png',
+                        '49.99',
+                        '29.99',
+                      ),
+                      _buildProduct(
+                        'fire HD10',
+                        'assets/images/fire_hd10.png',
+                        '149.99',
+                        '99.99',
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-          Text('Amazon Devices with Alexa', style: TextStyle(fontSize: 16)),
-          SizedBox(height: 5),
-          Text('Limited-time offer', style: TextStyle(fontSize: 12)),
-          SizedBox(height: 15),
 
-          // Productos con navegación
-          Row(
-            children: [
-              // Flecha izquierda
-              Icon(Icons.chevron_left, size: 40),
-
-              // Productos
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    // Echo Input
-                    _buildProduct(
-                      'echo input',
-                      'assets/images/echo_input.png',
-                      '34.99',
-                      '19.99',
-                    ),
-
-                    // Fire TV Stick
-                    _buildProduct(
-                      'fire tv stick',
-                      'assets/images/fire_tv_stick.png',
-                      '39.99',
-                      '29.99',
-                    ),
-
-                    // Echo Dot
-                    _buildProduct(
-                      'echo dot',
-                      'assets/images/echo_dot.png',
-                      '49.99',
-                      '29.99',
-                    ),
-
-                    // Fire HD10
-                    _buildProduct(
-                      'fire HD10',
-                      'assets/images/fire_hd10.png',
-                      '149.99',
-                      '99.99',
-                    ),
-                  ],
-                ),
-              ),
-
-              // Flecha derecha
-              Icon(Icons.chevron_right, size: 40),
-            ],
-          ),
+          // Flecha derecha
+          const Icon(Icons.chevron_right, size: 36),
         ],
       ),
     );
@@ -105,17 +129,33 @@ class OffToCollegeDeals extends StatelessWidget {
   ) {
     return Column(
       children: [
-        // Imagen del producto
-        Image.asset(imagePath, width: 100, height: 100, fit: BoxFit.contain),
-
-        // Nombre del producto
-        Text(name, style: TextStyle(fontSize: 14)),
-
-        // Precios
+        Container(
+          margin: const EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                blurRadius: 6,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: Image.asset(
+            imagePath,
+            width: 100,
+            height: 100,
+            fit: BoxFit.contain,
+          ),
+        ),
+        Text(
+          name,
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+        ),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Precio anterior tachado
             Text(
               '\$$oldPrice',
               style: TextStyle(
@@ -124,12 +164,10 @@ class OffToCollegeDeals extends StatelessWidget {
                 color: Colors.grey[700],
               ),
             ),
-            SizedBox(width: 4),
-
-            // Precio de oferta
+            const SizedBox(width: 4),
             Text(
               '\$$newPrice',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ],
         ),
