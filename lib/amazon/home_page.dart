@@ -1,4 +1,6 @@
-import 'package:amazon_web/screens/StockupCollege.dart';
+// ignore_for_file: deprecated_member_use
+
+import 'package:amazon_web/amazon/StockupCollege.Dart';
 import 'package:flutter/material.dart';
 import 'barra_nav.dart';
 import 'offers.dart';
@@ -11,33 +13,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFE3E6E6),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: HomeScreen(),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const OffToCollegeDeals(),
-            const SizedBox(height: 30),
-
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Expanded(child: UniformCard(child: BargainsFinds())),
-                SizedBox(width: 10),
-                Expanded(child: UniformCard(child: StockUpForCollege())),
-                SizedBox(width: 10),
-                Expanded(child: UniformCard(child: MensMustHaveShoes())),
-                SizedBox(width: 10),
-                Expanded(child: SignInCard()), // NUEVO
-              ],
-            ),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacementNamed(context, '/');
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: const Color(0xFFE3E6E6),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100),
+          child: HomeScreen(),
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const OffToCollegeDeals(),
+              const SizedBox(height: 30),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Expanded(child: UniformCard(child: BargainsFinds())),
+                  SizedBox(width: 10),
+                  Expanded(child: UniformCard(child: StockUpForCollege())),
+                  SizedBox(width: 10),
+                  Expanded(child: UniformCard(child: MensMustHaveShoes())),
+                  SizedBox(width: 10),
+                  Expanded(child: SignInCard()),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -70,11 +77,10 @@ class SignInCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 330, // mismo alto que los UniformCard
+    return SizedBox(
+      height: 330,
       child: Column(
         children: [
-          // Sign in card blanca
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(12),
@@ -91,10 +97,7 @@ class SignInCard extends StatelessWidget {
             ),
             child: const SignInSection(),
           ),
-
           const SizedBox(height: 8),
-
-          // Banner azul expandido al resto del alto
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(6),
