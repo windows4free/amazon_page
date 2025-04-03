@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
-    );
-  }
-}
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -23,7 +7,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(102),
+        preferredSize: const Size.fromHeight(100),
         child: Column(
           children: [
             Container(
@@ -33,89 +17,252 @@ class HomeScreen extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  IconButton(
-                    icon: const Icon(Icons.menu, color: Colors.white),
-                    onPressed: () {},
+                  Image.asset(
+                    'assets/images/amazon_logo.jpg',
+                    height: 40,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Text(
+                        'Amazon',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      );
+                    },
                   ),
-                  Image.asset('assets/images/Amzg.jpg', height: 32),
-                  const SizedBox(width: 4),
-                  const Text(
-                    'Try Prime',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Color(0xFF00A8E1),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  const DeliveryInfo(),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    flex: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: SearchBar(),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: 10),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Column(
-                        children: const [
-                          Icon(Icons.language, color: Colors.white, size: 16),
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 4),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Deliver to Wilson',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                              ),
+                            ),
+                            Text(
+                              'Villanueva, 21101',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Container(
+                          height: 40,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          color: const Color(0xFFEDEDED),
+                          child: Row(
+                            children: const [
+                              Text('All'),
+                              Icon(Icons.arrow_drop_down),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 40,
+                            color: Colors.white,
+                            child: const TextField(
+                              decoration: InputDecoration(
+                                hintText: 'Search Amazon',
+                                border: InputBorder.none,
+                                contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          color: Color(0xFFFFA41C),
+                          child: const Icon(Icons.search, color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.network(
+                        'https://flagcdn.com/us.svg',
+                        width: 18,
+                        height: 12,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(
+                            Icons.flag,
+                            color: Colors.white,
+                            size: 12,
+                          );
+                        },
+                      ),
+                      const Text(
+                        'EN',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 16),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Hello, Wilson',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                      Row(
+                        children: [
                           Text(
-                            "EN",
-                            style: TextStyle(color: Colors.white, fontSize: 11),
+                            'Account & Lists',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.white,
+                            size: 16,
                           ),
                         ],
                       ),
-                      const SizedBox(width: 10),
-                      const AccountCartSection(),
                     ],
+                  ),
+                  const SizedBox(width: 16),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        'Returns',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                      Text(
+                        '& Orders',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 16),
+                  Stack(
+                    children: [
+                      const Icon(
+                        Icons.shopping_cart,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                      Positioned(
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(2),
+                          decoration: const BoxDecoration(
+                            color: Colors.orange,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Text(
+                            '0',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Cart',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
               ),
             ),
             Container(
               color: const Color(0xFF232F3E),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
               height: 40,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      NavLink("Today's Deals"),
-                      SizedBox(width: 80),
-                      NavLink("Your Amazon.com"),
-                      SizedBox(width: 80),
-                      NavLink("Gift Cards"),
-                      SizedBox(width: 80),
-                      NavLink("Help"),
-                      SizedBox(width: 80),
-                      NavLink("Whole Foods"),
-                      SizedBox(width: 80),
-                      NavLink("Registry"),
-                      SizedBox(width: 80),
-                      NavLink("Sell"),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      Text(
-                        "Off to College ",
-                        style: TextStyle(color: Colors.white, fontSize: 13),
-                      ),
-                      Text(
-                        "deals",
-                        style: TextStyle(
-                          color: Color(0xFFFACC15),
-                          fontSize: 13,
+                  const SizedBox(width: 10),
+                  const Icon(Icons.menu, color: Colors.white),
+                  const SizedBox(width: 10),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.bubble_chart,
+                          size: 14,
+                          color: Colors.orange,
                         ),
-                      ),
-                    ],
+                        SizedBox(width: 4),
+                        Text('Rufus', style: TextStyle(fontSize: 12)),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    "Today's Deals",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  const SizedBox(width: 20),
+                  const Text(
+                    "Buy Again",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  const SizedBox(width: 20),
+                  const Text(
+                    "Customer Service",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  const SizedBox(width: 20),
+                  const Text(
+                    "Registry",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  const SizedBox(width: 20),
+                  const Text(
+                    "Gift Cards",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  const SizedBox(width: 20),
+                  const Text(
+                    "Sell",
+                    style: TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
               ),
@@ -124,185 +271,6 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: const Center(child: Text("Contenido Principal")),
-    );
-  }
-}
-
-class NavLink extends StatelessWidget {
-  final String label;
-  const NavLink(this.label, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      label,
-      style: const TextStyle(color: Colors.white, fontSize: 13),
-    );
-  }
-}
-
-class DeliveryInfo extends StatelessWidget {
-  const DeliveryInfo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Icon(Icons.location_on, color: Colors.white, size: 18),
-        SizedBox(width: 4),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Deliver to",
-              style: TextStyle(color: Colors.white, fontSize: 11),
-            ),
-            Text(
-              "Seattle 98103",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: const BoxDecoration(
-              color: Color(0xFFEDEDED),
-              borderRadius: BorderRadius.horizontal(left: Radius.circular(4)),
-            ),
-            child: Row(
-              children: const [
-                Text(
-                  "All",
-                  style: TextStyle(color: Colors.black, fontSize: 13),
-                ),
-                Icon(Icons.arrow_drop_down, color: Colors.black, size: 18),
-              ],
-            ),
-          ),
-          Expanded(
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "Search",
-                contentPadding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: 8,
-                ),
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-          Container(
-            height: 40,
-            width: 40,
-            decoration: const BoxDecoration(
-              color: Color(0xFFFFA41C),
-              borderRadius: BorderRadius.horizontal(right: Radius.circular(4)),
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.search, color: Colors.white, size: 20),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class AccountCartSection extends StatelessWidget {
-  const AccountCartSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              "Hello, Sign in",
-              style: TextStyle(color: Colors.white, fontSize: 11),
-            ),
-            Row(
-              children: const [
-                Text(
-                  "Account & Lists",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Icon(Icons.arrow_drop_down, color: Colors.white, size: 16),
-              ],
-            ),
-          ],
-        ),
-        const SizedBox(width: 12),
-        const Text(
-          "Orders",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 13,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(width: 12),
-        const Text(
-          "Try Prime",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 13,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Stack(
-          children: [
-            const Icon(Icons.shopping_cart, color: Colors.white, size: 26),
-            Positioned(
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: const BoxDecoration(
-                  color: Colors.orange,
-                  shape: BoxShape.circle,
-                ),
-                child: const Text(
-                  "0",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }

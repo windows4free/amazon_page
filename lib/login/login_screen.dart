@@ -252,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               'INICIA SESION',
                               style: ralewayStyle.copyWith(
                                 fontWeight: FontWeight.w700,
-                                color: AppColors.whiteColor,
+                                color: AppColors.blackColor,
                                 fontSize: 16.0,
                               ),
                             ),
