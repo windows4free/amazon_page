@@ -222,8 +222,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             String email = emailController.text.trim();
                             String password = passwordController.text.trim();
 
-                            if (email == "admin@admin.com" &&
-                                password == "admin123") {
+                            if (email == "amazonuser@gmail.com" &&
+                                password == "amazon4life") {
                               Navigator.pushReplacementNamed(
                                 context,
                                 '/amazon',
