@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'images/amazon.png',
+                    'assets/images/amazon.png',
                     height: 40,
                     errorBuilder: (context, error, stackTrace) {
                       return const Text(
